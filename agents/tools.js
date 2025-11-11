@@ -1,5 +1,5 @@
 
-const peers = {};
+const agents = {};
 
 export const roles = `
 The goal of the team is to produce a short and original children's tale and generate a printable output beautified with md5.
@@ -9,8 +9,8 @@ Writer: Comes up with the story based on the Editor's guidelines.
 Printer: Decorates the manuscript produced by the writer with md formatting, creating the final product.
 `;
 
-export function registerPeer(peer, send){
-    peers[peer] = {
+export function registerAgent(agent, send){
+    agents[agent] = {
         send
     }
 }
@@ -56,6 +56,6 @@ export const tools = [
 export const functions = {
     sendMessage: async (params) => {
         const { from, to, message } = params;
-        peers[to]['send'](from, message);
+        agents[to]['send'](from, message);
     }
 };

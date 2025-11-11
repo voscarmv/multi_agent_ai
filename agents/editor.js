@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { registerPeer, roles } from './tools';
+import { registerAgent, roles } from './tools';
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_KEY,
@@ -26,4 +26,4 @@ function receive(from, content){
     openai.chat.completions
 }
 
-registerPeer('editor', receive);
+registerAgent('editor', receive);
