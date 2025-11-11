@@ -1,6 +1,6 @@
 import { registerAgent, roles } from './tools.js';
 import { runAI } from './gpt.js';
-import { tools, functions } from './tools.js';
+import { tools, functions, getTermination } from './tools.js';
 
 export class Agent {
     constructor(name, prompt, agentTools=[], agentFunctions={}) {
@@ -14,9 +14,12 @@ export class Agent {
         registerAgent(this.name, this.receive);
     }
     async receive(from, content) {
+        if(getTermination()){
+            return;
+        }
         this.messages.push({
             role: 'system',
-            content: `The following message was from ${from}:`
+            content: `The following message came from ${from}:`
         });
 
         this.messages.push({
