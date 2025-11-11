@@ -18,6 +18,8 @@ export class Agent {
         registerAgent(name, this.receive.bind(this));
     }
     receive(from, content) {
+        console.log(`From: ${from}, To: ${this.name}`);
+        console.log(content);
         if (getTermination()) {
             return;
         }
@@ -33,19 +35,19 @@ export class Agent {
     }
     async #processMessages() {
         this.isBusy = true;
+        let ctr=0;
         while (this.queue.length > 0) {
+            console.log(`queue loop in ${this.name} is ${ctr}`)
             this.messages.concat(this.queue);
             this.queue.length = 0;
-            console.log(this.messages);
             const reply = await runAI(
+                this.name,
                 this.messages,
                 this.tools,
                 this.functions
             );
-            console.log(this.name);
-            console.log(reply);
-            console.log('---');
             this.messages = reply;
+            ctr++;
         }
         this.isBusy = false;
         return;
