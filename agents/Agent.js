@@ -23,13 +23,13 @@ export class Agent {
         if (getTermination()) {
             return;
         }
-        this.queue.push({
-            role: 'system',
-            content: `The following message came from ${from}:`
-        });
+        // this.queue.push({
+        //     role: 'system',
+        //     content: `The following message came from ${from}:`
+        // });
         this.queue.push({
             role: 'user',
-            content
+            content: `${from} sent you this message: ${content}`
         });
         if (!this.isBusy) this.#processMessages();
     }

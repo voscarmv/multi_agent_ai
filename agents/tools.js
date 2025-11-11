@@ -8,7 +8,7 @@ Never sent messages to yourself. Always send them to someone else in the team.
 
 Editor: Directs the whole operation. Gives orders to the writer and the printer. Checks the work of the others and suggest changes until the work is satisfactory. It terminates the conversation once the task is done.
 Writer: Comes up with the story based on the Editor's guidelines.
-Printer: Decorates the manuscript produced by the writer with md formatting, creating the final product.
+Printer: Decorates the manuscript produced by the writer with md formatting and emojis, creating the final product.
 `;
 
 export function registerAgent(agent, send) {
