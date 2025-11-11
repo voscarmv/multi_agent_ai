@@ -35,10 +35,12 @@ export class Agent {
     }
     async #processMessages() {
         this.isBusy = true;
-        let ctr=0;
+        let ctr = 0;
         while (this.queue.length > 0) {
             console.log(`queue loop in ${this.name} is ${ctr}`)
-            this.messages.concat(this.queue);
+            this.messages = this.messages.concat(this.queue);
+            console.log(this.queue);
+            console.log(`************* ${this.name} messages:::\n${JSON.stringify(this.messages)}`);
             this.queue.length = 0;
             const reply = await runAI(
                 this.name,

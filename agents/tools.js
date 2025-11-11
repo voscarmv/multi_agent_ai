@@ -3,9 +3,9 @@ const agents = {};
 
 export const roles = `
 The goal of the team is to produce a short and original children's tale and generate a printable output beautified with md5.
-Everyone should send a single message at a time and wait for the response to continue sending the next message.
 Never sent messages to yourself. Always send them to someone else in the team.
 
+These are the members of the team (agents)
 Editor: Directs the whole operation. Gives orders to the writer and the printer. Checks the work of the others and suggest changes until the work is satisfactory. It terminates the conversation once the task is done.
 Writer: Comes up with the story based on the Editor's guidelines.
 Printer: Decorates the manuscript produced by the writer with md formatting and emojis, creating the final product.
@@ -22,13 +22,13 @@ export const tools = [
         type: 'function',
         function: {
             name: 'sendMessage',
-            description: 'Send a message to a peer.',
+            description: 'Send a message to another agent.',
             parameters: {
                 type: 'object',
                 properties: {
                     from: {
                         type: 'string',
-                        description: 'You, who sends the message.',
+                        description: 'Sender (you).',
                         enum: [
                             'editor',
                             'printer',
@@ -37,7 +37,7 @@ export const tools = [
                     },
                     to: {
                         type: 'string',
-                        description: 'The recipient, who you are sending the message to.',
+                        description: 'Recipient (the other agent).',
                         enum: [
                             'editor',
                             'printer',
