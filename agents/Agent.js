@@ -11,7 +11,9 @@ export class Agent {
                 content: `${prompt}\n\n${roles}`
             }
         ];
-        registerAgent(this.name, this.receive);
+        this.tools = tools.concat(agentTools);
+        this.functions = Object.assign({}, functions, agentFunctions);
+        registerAgent(name, this.receive.bind(this));
     }
     async receive(from, content) {
         if(getTermination()){
@@ -26,12 +28,15 @@ export class Agent {
             role: 'user',
             content
         });
-
+        console.log(this.messages);
         const reply = await runAI(
             this.messages,
-            tools.concat(agentTools),
-            Object.assign({}, functions, agentFunctions)
+            this.tools,
+            this.functions
         );
+        console.log(this.name);
+        console.log(reply);
+        console.log('---');
         this.messages = reply;
         return reply;
     }

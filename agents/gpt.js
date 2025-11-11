@@ -35,7 +35,7 @@ export async function callTool(tool_call, additionalArgs, functions) {
 
 export async function runAI(messages, tools, functions, additionalArgs = {}) {
   const reply = await gpt(messages, tools);
-
+  console.log(reply);
   // Add assistant message
   const message = {
     role: 'assistant',
@@ -50,7 +50,7 @@ export async function runAI(messages, tools, functions, additionalArgs = {}) {
     messages.push({
       role: 'tool',
       tool_call_id: result.tool_call_id,
-      content: result.content
+      content: result.content || ''
     });
   }
 
