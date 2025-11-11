@@ -2,8 +2,8 @@
 const agents = {};
 
 export const roles = `
-The goal of the team is to produce a short and original children's tale and generate a printable output beautified with md5.
-Never sent messages to yourself. Always send them to someone else in the team.
+The goal of the team is to produce a short and original children's tale and generate a printable output beautified with markdown and emojis.
+Communicate and respond to each other's messages using the sendMessage function to complete the task.
 
 These are the members of the team (agents)
 Editor: Directs the whole operation. Gives orders to the writer and the printer. Checks the work of the others and suggest changes until the work is satisfactory. It terminates the conversation once the task is done.
