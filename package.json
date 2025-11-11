@@ -1,0 +1,24 @@
+{
+  "name": "multi_agent_ai",
+  "version": "1.0.0",
+  "description": "Basic framework for multi-agent AI communication",
+  "homepage": "https://github.com/voscarmv/multi_agent_ai#readme",
+  "bugs": {
+    "url": "https://github.com/voscarmv/multi_agent_ai/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voscarmv/multi_agent_ai.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "openai": "^6.8.1"
+  }
+}
