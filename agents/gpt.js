@@ -44,7 +44,7 @@ export async function runAI(name, messages, tools, functions, additionalArgs = {
   messages.push(message);
 
   // If the AI requested tools, process them all
-  console.log(`These tool calls come from ${name}\n${JSON.stringify(reply.tool_calls)}`);
+  // console.log(`These tool calls come from ${name}\n${JSON.stringify(reply.tool_calls)}`);
   for (let i = 0; i < reply.tool_calls.length; i++) {
     const result = await callTool(reply.tool_calls[i], additionalArgs, functions);
     messages.push({

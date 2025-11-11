@@ -18,29 +18,32 @@ export class Agent {
         registerAgent(name, this.receive.bind(this));
     }
     receive(from, content) {
-        console.log(`From: ${from}, To: ${this.name}`);
-        console.log(content);
+        console.log(`**** From: ${from}, To: ${this.name}\n${content}`);
         if (getTermination()) {
             return;
         }
-        // this.queue.push({
-        //     role: 'system',
-        //     content: `The following message came from ${from}:`
-        // });
+        this.queue.push({
+            role: 'system',
+            content: `The following message came from ${from}:`
+        });
         this.queue.push({
             role: 'user',
-            content: `${from} sent you this message: ${content}`
+            content
         });
+        // this.queue.push({
+        //     role: 'user',
+        //     content: `${from} sent you this message: ${content}`
+        // });
         if (!this.isBusy) this.#processMessages();
     }
     async #processMessages() {
         this.isBusy = true;
         let ctr = 0;
         while (this.queue.length > 0) {
-            console.log(`queue loop in ${this.name} is ${ctr}`)
+            // console.log(`queue loop in ${this.name} is ${ctr}`)
             this.messages = this.messages.concat(this.queue);
-            console.log(this.queue);
-            console.log(`************* ${this.name} messages:::\n${JSON.stringify(this.messages)}`);
+            // console.log(this.queue);
+            // console.log(`************* ${this.name} messages:::\n${JSON.stringify(this.messages)}`);
             this.queue.length = 0;
             const reply = await runAI(
                 this.name,
