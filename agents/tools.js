@@ -64,6 +64,7 @@ export const functions = {
     sendMessage: async (params) => {
         const { from, to, message } = params;
         agents[to]['send'](from, message);
+        return `Message sent to ${to}`
     }
 };
 
